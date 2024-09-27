@@ -1,0 +1,15 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "sass --watch src/styles/sass/index.scss:src/styles/css/index.css",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.79.3",
+    "vite": "^5.4.1"
+  }
+}
