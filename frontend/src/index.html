@@ -23,7 +23,7 @@
                 <form class="form">
                     <div class="form-group">
                         <label for="project">Mon projet</label>
-                        <select id="project">
+                        <select id="project-input">
                             <option>Je Gère mes imprévus</option>
                             <option>J'ai besoin d'argent</option>
                             <option>je finance mon vehicule neuf</option>
@@ -31,8 +31,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="status">Je suis</label>
-                        <select id="status">
+                        <label for="profession">Je suis</label>
+                        <select id="profession-input">
                             <option>Fonctionnaire</option>
                             <option>salarie - secteur privé</option>
                             <option>commerçant</option>
@@ -42,20 +42,20 @@
 
                     <div class="form-group">
                         <label for="amount">Montant (en DH)</label>
-                        <input disabled class="number-input" type="number" id="amount" value="10000">
-                        <input type="range" class="slider" min="0" max="20000" value="10000">
+                        <input disabled  type="number" id="amount-input" value="10000">
+                        <input id="amount-range" type="range" class="slider" min="0" max="20000" value="10000">
                     </div>
 
                     <div class="form-group">
                         <label for="duration">Durée (en mois)</label>
-                        <input disabled class="number-input" type="number" id="duration" value="24">
-                        <input type="range" class="slider" min="0" max="48" value="24">
+                        <input disabled type="number" id="duration-input" value="24">
+                        <input id="duration-range" type="range" class="slider" min="0" max="72" value="24">
                     </div>
 
                     <div class="form-group">
                         <label for="monthly">Mensualités (en DH)</label>
-                        <input disabled class="number-input" type="number" id="monthly" value="469.4" readonly>
-                        <input type="range" class="slider" min="0" max="1000" value="469.4">
+                        <input disabled type="number" id="monthly-input" value="469.4" readonly>
+                        <input id="monthly-range" type="range" class="slider" min="0" max="1000" value="469.4">
                     </div>
                     <div class="submit-btn-parent">
                         <button type="submit" class="submit-btn">Continuer <br> sans engagement</button>
@@ -69,6 +69,7 @@
             </div>
         </div>
     </div>
+    <script src="./main.js"></script>
 </body>
 
 </html>
