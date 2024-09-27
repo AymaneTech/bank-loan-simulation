@@ -1,3 +1,4 @@
+
 const projectInput = document.querySelector("#project-input");
 const professionInput = document.querySelector("#profession-input");
 const amountRange = document.querySelector("#amount-range");
@@ -7,12 +8,14 @@ const durationInput = document.querySelector("#duration-input");
 const monthlyRange = document.querySelector("#monthly-range");
 const monthlyInput = document.querySelector("#monthly-input");
 
+const stepOneSubmitBtn = document.querySelector("#submit-step-one");
+
 const taxRate = 12;
 const monthlyRate = taxRate / 12 / 100;
 
 const updateByAmountAndDuration = () => {
-    let amount = parseFloat(amountRange.value); 
-    let duration = parseInt(durationRange.value); 
+    let amount = parseFloat(amountRange.value);
+    let duration = parseInt(durationRange.value);
 
     let monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -duration));
 
@@ -21,8 +24,8 @@ const updateByAmountAndDuration = () => {
 };
 
 const updateByMonthlyAndDuration = () => {
-    let monthlyPayment = parseFloat(monthlyRange.value); 
-    let duration = parseInt(durationRange.value); 
+    let monthlyPayment = parseFloat(monthlyRange.value);
+    let duration = parseInt(durationRange.value);
 
     let amount = monthlyPayment * (1 - Math.pow(1 + monthlyRate, -duration)) / monthlyRate;
 
@@ -31,18 +34,18 @@ const updateByMonthlyAndDuration = () => {
 };
 
 const updateByAmountAndMonthly = () => {
-    let monthlyPayment = parseFloat(monthlyRange.value); 
-    let amount = parseFloat(amountRange.value); 
+    let monthlyPayment = parseFloat(monthlyRange.value);
+    let amount = parseFloat(amountRange.value);
 
     let duration = -Math.log(1 - (amount * monthlyRate) / monthlyPayment) / Math.log(1 + monthlyRate);
 
-    durationInput.value = Math.round(duration); 
+    durationInput.value = Math.round(duration);
     durationRange.value = Math.round(duration);
 };
 
 amountRange.addEventListener("input", () => {
     amountInput.value = amountRange.value;
-    updateByAmountAndDuration(); 
+    updateByAmountAndDuration();
 });
 
 durationRange.addEventListener("input", () => {
@@ -70,3 +73,16 @@ monthlyInput.addEventListener("input", () => {
     updateByMonthlyAndDuration();
 });
 
+stepOneSubmitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let data = {
+        project: projectInput.value,
+        profession: professionInput.value,
+        amount: amountInput.value,
+        duration: durationInput.value,
+        monthly: monthlyInput.value
+    }
+
+    window.localStorage.setItem("creditData", JSON.stringify(data));
+    console.log("data", data);
+})
